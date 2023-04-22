@@ -1,12 +1,22 @@
 import React from "react";
-import { useToggleTodoMutation } from "../api/apiSlice.js";
+import {
+  useToggleTodoMutation,
+  useDeleteTodoMutation,
+} from "../api/apiSlice.js";
+import { TbTrash } from "react-icons/tb";
 
 export default function Todo({ todo }) {
-  const [toggleTodo, { isLoading }] = useToggleTodoMutation();
+  const [toggleTodo] = useToggleTodoMutation();
+  const [deleteTodo] = useDeleteTodoMutation();
   const { taskname, complete } = todo;
 
   const handleToggleTodo = () => {
     toggleTodo({ ...todo, complete: !complete });
+  };
+
+  // given a todo id, delete the todo with that ID
+  const handleDeleteTodo = (id) => {
+    deleteTodo(id);
   };
 
   return (
@@ -17,6 +27,12 @@ export default function Todo({ todo }) {
         checked={complete}
         onChange={handleToggleTodo}
       ></input>
+      <TbTrash
+        className="self-center"
+        onClick={() => {
+          handleDeleteTodo(todo.id);
+        }}
+      ></TbTrash>
     </div>
   );
 }
