@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGetTodosQuery } from "./features/api/apiSlice.js";
+import AddTodo from "./features/todos/AddTodo.jsx";
 import TodoList from "./features/todos/TodoList.jsx";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <div>{content}</div>
+      <AddTodo />
     </>
   );
 }

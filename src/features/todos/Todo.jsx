@@ -10,13 +10,13 @@ export default function Todo({ todo }) {
   };
 
   return (
-    <>
-      <div>{taskname}</div>
+    <div className="flex gap-5">
+      <div className="text-2xl">{taskname}</div>
       <input
         type="checkbox"
         checked={complete}
         onChange={handleToggleTodo}
       ></input>
-    </>
+    </div>
   );
 }
